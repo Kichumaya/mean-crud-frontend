@@ -1,14 +1,20 @@
-<div *ngIf="auth.isLoggedIn()" style="text-align: right;">
-  <button (click)="logout()">Logout</button>
-</div>
+<mat-card>
+  <mat-card-title>User List</mat-card-title>
+  <mat-card-content>
+    <button mat-raised-button color="primary" routerLink="/users/add">Add New User</button>
 
-<h2>User List</h2>
-<button routerLink="/users/add">Add New User</button>
-
-<ul>
-  <li *ngFor="let user of users">
-    {{ user.name }} ({{ user.email }})
-    <button [routerLink]="['/users/edit', user._id]">Edit</button>
-    <button (click)="deleteUser(user._id)">Delete</button>
-  </li>
-</ul>
+    <mat-list>
+      <mat-list-item *ngFor="let user of users">
+        <div style="flex: 1;">
+          {{ user.name }} ({{ user.email }})
+        </div>
+        <button mat-icon-button color="accent" [routerLink]="['/users/edit', user._id]">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteUser(user._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

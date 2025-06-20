@@ -1,0 +1,7 @@
+<mat-toolbar color="primary">
+  <span>User Management</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/users">Users</button>
+  <button mat-button routerLink="/users/add">Add User</button>
+  <button *ngIf="auth.isLoggedIn()" mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
